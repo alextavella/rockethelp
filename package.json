@@ -16,6 +16,7 @@
     "expo-splash-screen": "~0.15.1",
     "expo-status-bar": "~1.3.0",
     "native-base": "^3.4.9",
+    "phosphor-react-native": "^1.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-native": "0.68.2",
@@ -38,7 +39,13 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.30.1",
     "prettier": "^2.7.1",
+    "react-native-svg-transformer": "^1.0.0",
     "typescript": "~4.3.5"
   },
-  "private": true
+  "private": true,
+  "jest": {
+    "moduleNameMapper": {
+      "\\.svg": "<rootDir>/test/mocks/svgMock.js"
+    }
+  }
 }
