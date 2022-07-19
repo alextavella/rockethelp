@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native'
 import {
   Center,
   FlatList,
@@ -17,6 +18,7 @@ type SelectedStatusType = 'opened' | 'closed'
 
 export const Home: React.FC = () => {
   const { colors } = useTheme()
+  const navigation = useNavigation()
 
   const [selectedStatus, setSelectedStatus] =
     React.useState<SelectedStatusType>('opened')
@@ -26,7 +28,7 @@ export const Home: React.FC = () => {
       id: '1',
       patrimony: '123456',
       when: '18/07/2022 às 22:00',
-      status: 'closed',
+      status: 'opened',
     },
     {
       id: '2',
@@ -34,37 +36,15 @@ export const Home: React.FC = () => {
       when: '18/07/2022 às 22:00',
       status: 'closed',
     },
-    {
-      id: '3',
-      patrimony: '123456',
-      when: '18/07/2022 às 22:00',
-      status: 'closed',
-    },
-    {
-      id: '4',
-      patrimony: '123456',
-      when: '18/07/2022 às 22:00',
-      status: 'closed',
-    },
-    {
-      id: '5',
-      patrimony: '123456',
-      when: '18/07/2022 às 22:00',
-      status: 'closed',
-    },
-    {
-      id: '6',
-      patrimony: '123456',
-      when: '18/07/2022 às 22:00',
-      status: 'closed',
-    },
   ])
 
-  const handlePressOrder = React.useCallback((id: string) => {
-    console.log({ id })
+  const handlePressOrder = React.useCallback((orderId: string) => {
+    navigation.navigate('details', { orderId })
   }, [])
 
-  const handlePressNewOrder = React.useCallback(() => { }, [])
+  const handlePressNewOrder = React.useCallback(() => {
+    navigation.navigate('new')
+  }, [])
 
   return (
     <VStack flex="1" pb={6} bg="gray.700">
@@ -89,8 +69,8 @@ export const Home: React.FC = () => {
           justifyContent="space-between"
           alignItems="center"
         >
-          <Heading color="gray.200">Meus chamados</Heading>
-          <Text color="gray.200">3</Text>
+          <Heading color="gray.200">Solicitações</Heading>
+          <Text color="gray.200">{orders.length}</Text>
         </HStack>
 
         <HStack space={3} mb={8}>
