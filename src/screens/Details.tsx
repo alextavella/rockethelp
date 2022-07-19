@@ -15,7 +15,7 @@ export const Details: React.FC<DetailsProps> = () => {
 
   return (
     <VStack flex={1} bg="gray.700">
-      <Header title="solicitação" />
+      <Header title="solicitação" p={2} />
       <Text color="white">Order: {orderId}</Text>
     </VStack>
   )

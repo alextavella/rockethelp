@@ -1,9 +1,9 @@
 import { useNavigation } from '@react-navigation/native'
-import { Heading, HStack, IconButton, useTheme } from 'native-base'
+import { Heading, HStack, IconButton, useTheme, IStackProps } from 'native-base'
 import { CaretLeft } from 'phosphor-react-native'
 import React from 'react'
 
-type HeaderProps = {
+type HeaderProps = IStackProps & {
   title: string
 }
 
@@ -19,10 +19,10 @@ export const Header: React.FC<HeaderProps> = ({ title, ...rest }) => {
       bg="gray.600"
       pb={6}
       pt={12}
+      {...rest}
     >
       <IconButton
         icon={<CaretLeft color={colors.gray[200]} size={24} />}
-        mx={2}
         onPress={() => navigation.goBack()}
       />
 
@@ -30,7 +30,7 @@ export const Header: React.FC<HeaderProps> = ({ title, ...rest }) => {
         {title}
       </Heading>
 
-      <IconButton mx={2} size={8} disabled />
+      <IconButton size={8} disabled />
     </HStack>
   )
 }
